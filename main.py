@@ -4,6 +4,7 @@
 # -*- coding: utf-8 -*-
 
 from config import token
+from telegram import bot
 from telegram.ext import(
         Updater,
         CommandHandler,
@@ -60,8 +61,17 @@ def CAP(update: Update, context: CallbackContext) -> None:
     return img
 
 def IMG(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('با موفقیت انجام شد👍')
-    return ConversationHandler.END
+    try:
+        ifile = update.message.photo[-1].get_file()
+        if ifile.file_path[-3:] not in ('jpgpngjpegbmp'):
+            update.message.reply_text('لطفا یک تصویر استاندارد انتخاب کنید🖼️')
+        else:
+            path = ifile.download("input.jpg")
+            update.message.reply_text('با موفقیت انجام شد👍')
+            return ConversationHandler.END
+    except:
+        update.message.reply_text('لطفا یک تصویر استاندارد انتخاب کنید🖼️')
+
 
 def main() -> None:
     updater = Updater(f"{token}")
