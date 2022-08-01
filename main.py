@@ -1,76 +1,95 @@
 #! /usr/bin/python
-# behrouz_ashraf
-# garpozir@gmail.com
-# -*- coding: utf-8 -*-
+# behrouz_ashraf
+# garpozir@gmail.com
+# -*- coding: utf-8 -*-
 
 from config import token
 from telegram import bot
-from telegram.ext import(
-        Updater,
-        CommandHandler,
-        MessageHandler,
-        Filters,
-        ConversationHandler,
-        CallbackContext,
-        CallbackQueryHandler
+from telegram.ext import (
+    Updater,
+    CommandHandler,
+    MessageHandler,
+    Filters,
+    ConversationHandler,
+    CallbackContext,
+    CallbackQueryHandler,
 )
-import telegram,time,hashlib,sqlite3,datetime,os
-from telegram import Update,ForceReply,Sticker,KeyboardButton,ReplyKeyboardMarkup,InlineKeyboardButton,InlineKeyboardMarkup
+import telegram, time, hashlib, sqlite3, datetime, os
+from telegram import (
+    Update,
+    ForceReply,
+    Sticker,
+    KeyboardButton,
+    ReplyKeyboardMarkup,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+)
 import json
 import logging
 from telegram import Update, ForceReply
 
 # Enable logging
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 
 logger = logging.getLogger(__name__)
-up_titr,titr,cap,img=range(4)
+up_titr, titr, cap, img = range(4)
+
 
 def cancel(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('عملیات لغو شد😞')
+    update.message.reply_text("عملیات لغو شد😞")
     return ConversationHandler.END
+
 
 def start(update: Update, context: CallbackContext) -> None:
     user = update.effective_user
     update.message.reply_markdown_v2(
-        fr'Hi {user.mention_markdown_v2()}\!',
+        rf"Hi {user.mention_markdown_v2()}\!",
     )
 
+
 def help_command(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('/start راه اندازی ربات💡\n\n/help راهنما💡\n\n/begin شروع به کار💡\n\n/cancel لغو عملیات💡\n\n\tتذکر: هر بخشی که میخواهید متن خالی باشد نقطه بگذارید')
+    update.message.reply_text(
+        "/start راه اندازی ربات💡\n\n/help راهنما💡\n\n/begin شروع به کار💡\n\n/cancel لغو عملیات💡\n\n\tتذکر: هر بخشی که میخواهید متن خالی باشد نقطه بگذارید"
+    )
+
 
 def echo(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('چنین دستوری وجود ندارد🚫')
+    update.message.reply_text("چنین دستوری وجود ندارد🚫")
+
 
 def begin(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('رو تیتر را وارد کنید یانقطه بگذارید📖')
+    update.message.reply_text("رو تیتر را وارد کنید یانقطه بگذارید📖")
     return up_titr
 
+
 def UP_TITR(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('تیتر را وارد کنید یا نقطه بگذارید📖')
+    update.message.reply_text("تیتر را وارد کنید یا نقطه بگذارید📖")
     return titr
 
+
 def TITR(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('کپشن را وارد کنید یا نقطه بگذارید📖')
+    update.message.reply_text("کپشن را وارد کنید یا نقطه بگذارید📖")
     return cap
 
+
 def CAP(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text('یک تصویر وارد کنید. الزامی است🖼️')
+    update.message.reply_text("یک تصویر وارد کنید. الزامی است🖼️")
     return img
+
 
 def IMG(update: Update, context: CallbackContext) -> None:
     try:
         ifile = update.message.photo[-1].get_file()
-        if ifile.file_path[-3:] not in ('jpgpngjpegbmp'):
-            update.message.reply_text('لطفا یک تصویر استاندارد انتخاب کنید🖼️')
+        if ifile.file_path[-3:] not in ("jpgpngjpegbmp"):
+            update.message.reply_text("لطفا یک تصویر استاندارد انتخاب کنید🖼️")
         else:
             path = ifile.download("input.jpg")
-            update.message.reply_text('با موفقیت انجام شد👍')
+            update.message.reply_text("با موفقیت انجام شد👍")
             return ConversationHandler.END
     except:
-        update.message.reply_text('لطفا یک تصویر استاندارد انتخاب کنید🖼️')
+        update.message.reply_text("لطفا یک تصویر استاندارد انتخاب کنید🖼️")
 
 
 def main() -> None:
@@ -80,14 +99,14 @@ def main() -> None:
     dispatcher.add_handler(CommandHandler("help", help_command))
 
     conv_handler = ConversationHandler(
-        entry_points=[CommandHandler('begin', begin)],
+        entry_points=[CommandHandler("begin", begin)],
         states={
             up_titr: [MessageHandler(Filters.all, UP_TITR)],
             titr: [MessageHandler(Filters.all, TITR)],
             cap: [MessageHandler(Filters.all, CAP)],
-            img: [MessageHandler(Filters.all, IMG)]
+            img: [MessageHandler(Filters.all, IMG)],
         },
-        fallbacks=[CommandHandler('cancel', cancel)]
+        fallbacks=[CommandHandler("cancel", cancel)],
     )
 
     dispatcher.add_handler(conv_handler)
@@ -97,5 +116,6 @@ def main() -> None:
 
     updater.idle()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
