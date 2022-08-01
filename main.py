@@ -3,6 +3,9 @@
 # garpozir@gmail.com
 # -*- coding: utf-8 -*-
 
+from config import token
+
+
 def main()->None:
     pass
 
