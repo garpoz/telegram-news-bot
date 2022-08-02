@@ -1,6 +1,6 @@
 # Byte-compiled / optimized / DLL files
 config.py
-input.jpg
+input.png
 __pycache__/
 *.py[cod]
 *$py.class

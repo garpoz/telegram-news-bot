@@ -3,7 +3,7 @@
 #one minute run
 #lsof -t -i tcp:80 | xargs kill -9
 
-if lsof -t -i tcp:80
+if ps -e|egrep main
 then
     echo "is run..."
 else

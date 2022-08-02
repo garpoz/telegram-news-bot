@@ -105,7 +105,7 @@ def IMG(update: Update, context: CallbackContext) -> None:
         if ifile.file_path[-3:] not in ("jpgpngjpegbmp"):
             update.message.reply_text("لطفا یک تصویر استاندارد انتخاب کنید🖼️")
         else:
-            path = ifile.download("input.jpg")
+            path = ifile.download("input.png")
             update.message.reply_text("با موفقیت انجام شد👍")
             if in_data["text_up_titr"] == ".":
                 in_data["text_up_titr"] = ""
@@ -113,6 +113,7 @@ def IMG(update: Update, context: CallbackContext) -> None:
                 in_data["text_titr"] = ""
             if in_data["text_cap"] == ".":
                 in_data["text_cap"] = ""
+            os.system("convert input.png -resize 1080x1080\! input.png")
             return ConversationHandler.END
     except:
         update.message.reply_text("لطفا یک تصویر استاندارد انتخاب کنید🖼️")
