@@ -113,7 +113,8 @@ def IMG(update: Update, context: CallbackContext) -> None:
                 in_data["text_titr"] = ""
             if in_data["text_cap"] == ".":
                 in_data["text_cap"] = ""
-            os.system("convert input.png -resize 1080x1080\! input.png")
+            os.system("convert input.png -resize 1080x1080\! input.png;convert input.png filter.png -gravity center -composite input.png")
+            update.message.reply_text("⏳ در حال ساخت و ارسال تصویر نهایی...")
             return ConversationHandler.END
     except:
         update.message.reply_text("لطفا یک تصویر استاندارد انتخاب کنید🖼️")

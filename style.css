@@ -1,0 +1,73 @@
+/*
+# behrouz_ashraf
+# garpozir@gmail.com
+*/
+
+#ck{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+#img-id{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  max-width:100%;
+  height:auto;
+  border: 2px solid black;
+}
+.s-i{
+  width: 130px;
+  height: 130px;
+  top: 10%;
+}
+#rast{
+  position: absolute;
+  right: 22%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+}
+#chap{
+  position: absolute;
+  left: 34%;
+  transform: translate(-50%, -50%);
+}
+.text,.cap{
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "vazir";
+  font-size: 22px;
+  color:white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.cap{
+  top:83%;
+  font-size: 29px;
+  text-align: justify;
+  text-justify: inter-word;
+  padding-left: 28px;
+  padding-right: 28px;
+}
+
+.bottom{
+  padding-left: 28px;
+  padding-right: 28px;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "vazir";
+  font-size: 25px;
+  color:white;
+}
+
+@font-face{
+    font-family:"vazir";
+    src:url("./Damavand_ExtraBold.ttf")
+}
