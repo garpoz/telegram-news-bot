@@ -35,6 +35,7 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 up_titr, titr, cap, img = range(4)
+in_data = {}
 
 
 def cancel(update: Update, context: CallbackContext) -> None:
@@ -60,26 +61,45 @@ def echo(update: Update, context: CallbackContext) -> None:
 
 
 def begin(update: Update, context: CallbackContext) -> None:
-    update.message.reply_text("رو تیتر را وارد کنید یانقطه بگذارید📖")
+    update.message.reply_text("رو تیتر را وارد کنید یا نقطه بگذارید📖")
     return up_titr
 
 
 def UP_TITR(update: Update, context: CallbackContext) -> None:
+    if (update.message.text == "/cancel") | (update.message.text == None):
+        update.message.reply_text("عملیات لغو شد😞")
+        return ConversationHandler.END
+
+    in_data["text_up_titr"] = update.message.text
     update.message.reply_text("تیتر را وارد کنید یا نقطه بگذارید📖")
     return titr
 
 
 def TITR(update: Update, context: CallbackContext) -> None:
+    if (update.message.text == "/cancel") | (update.message.text == None):
+        update.message.reply_text("عملیات لغو شد😞")
+        return ConversationHandler.END
+
+    in_data["text_titr"] = update.message.text
     update.message.reply_text("کپشن را وارد کنید یا نقطه بگذارید📖")
     return cap
 
 
 def CAP(update: Update, context: CallbackContext) -> None:
+    if (update.message.text == "/cancel") | (update.message.text == None):
+        update.message.reply_text("عملیات لغو شد😞")
+        return ConversationHandler.END
+
+    in_data["text_cap"] = update.message.text
     update.message.reply_text("یک تصویر وارد کنید. الزامی است🖼️")
     return img
 
 
 def IMG(update: Update, context: CallbackContext) -> None:
+    if update.message.text == "/cancel":
+        update.message.reply_text("عملیات لغو شد😞")
+        return ConversationHandler.END
+
     try:
         ifile = update.message.photo[-1].get_file()
         if ifile.file_path[-3:] not in ("jpgpngjpegbmp"):
@@ -87,6 +107,12 @@ def IMG(update: Update, context: CallbackContext) -> None:
         else:
             path = ifile.download("input.jpg")
             update.message.reply_text("با موفقیت انجام شد👍")
+            if in_data["text_up_titr"] == ".":
+                in_data["text_up_titr"] = ""
+            if in_data["text_titr"] == ".":
+                in_data["text_titr"] = ""
+            if in_data["text_cap"] == ".":
+                in_data["text_cap"] = ""
             return ConversationHandler.END
     except:
         update.message.reply_text("لطفا یک تصویر استاندارد انتخاب کنید🖼️")
