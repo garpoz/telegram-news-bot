@@ -1,7 +1,5 @@
 selenium
 pillow
-requests
-Telethon
 python-telegram-bot
 redis
 jdatetime
