@@ -19,7 +19,7 @@ class Index:
         <title>entekhab</title>
         <link rel="stylesheet" href="./style.css">
     </head>
-    <body>
+    <body style="background-color:#002b5b">
         <div class="row" id="ck">
             <img id="img-id" class="nam row" src="./input.png" alt="Error Load Image">
             <img class="row s-i" id="chap" src="./chap.png" alt="Error Load Image">
