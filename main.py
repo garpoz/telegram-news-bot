@@ -5,7 +5,7 @@
 
 from myhtml import Index
 from config import token
-from telegram import bot
+from telegram import Bot
 from telegram.ext import (
     Updater,
     CommandHandler,
@@ -133,6 +133,7 @@ def IMG(update: Update, context: CallbackContext) -> None:
             os.system("convert output.png -resize 1080x1080\! output.png")
             time.sleep(1)
             chat_id = update["message"]["chat_id"]
+            bot=Bot(token)
             bot.send_photo(chat_id, photo=open("./output.png", "rb"))
             return ConversationHandler.END
     except:
