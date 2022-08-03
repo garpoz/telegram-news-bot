@@ -13,13 +13,11 @@ from selenium.webdriver.chrome.options import Options
 
 chrome_options = Options()
 agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36"
-mobile_emulation = {"deviceName": "Galaxy S5"}
-chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
 chrome_options.add_argument(f"user-agent={agent}")
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 d = webdriver.Chrome("/usr/bin/chromedriver", chrome_options=chrome_options)
-d.get("https://www.google.com/")
-d.get_screenshot_as_file("./storiy.png")
+d.get("file:///root/telegram-news-bot/index.html")
+d.get_screenshot_as_file("./output.png")
 d.quit()

@@ -123,6 +123,8 @@ def IMG(update: Update, context: CallbackContext) -> None:
             with open("index.html", "w", encoding="utf-8") as fd:
                 fd.write(resualt)
                 fd.close()
+            time.sleep(1)
+            os.system("python se.py")
             return ConversationHandler.END
     except:
         update.message.reply_text("لطفا یک تصویر استاندارد انتخاب کنید🖼️")
