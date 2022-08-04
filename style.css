@@ -44,6 +44,10 @@
   bottom:30px;
   padding-left:60px;
   padding-right:60px;
+
+  text-align:center;
+  width: 87%;
+  margin : auto;
 }
 
 #all-text1{
@@ -63,11 +67,6 @@
 
 .text{
   font-size:80px;
-}
-
-.cap{
-  text-align: justify;
-  text-justify: inter-word;
 }
 
 @font-face{
