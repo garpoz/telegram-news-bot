@@ -24,9 +24,7 @@ class Index:
             <img id="img-id" class="nam row" src="./input.png" alt="Error Load Image">
             <img class="row s-i" id="chap" src="./chap.png" alt="Error Load Image">
             <img class="row s-i" id="rast" src="./rast.png" alt="Error Load Image">
-            <div class="bottom"><h4>{self.up_text}</h4></div>
-            <div class="text"><h2>{self.text}</h2></div>
-            <div class="cap"><h6>{self.cap}</h6></div>
+            <div id="all-text"><span  class="bottom">{self.up_text}<br></span ><span class="text">{self.text}</span><br><span class="cap">{self.cap}</span></div>
         </div>
     </body>
 </html>
