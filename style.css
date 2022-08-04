@@ -46,6 +46,10 @@
   padding-right:60px;
 }
 
+#all-text1{
+  text-align: justify;
+  text-justify: inter-word;
+}
 .bottom,.cap,.text{
   font-family: "vazir";
   font-size: 45px;
