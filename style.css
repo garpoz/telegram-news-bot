@@ -20,8 +20,8 @@
 }
 
 .s-i{
-  width: 240px;
-  height: 240px;
+  width: 245px;
+  height: 245px;
   top: 10%;
 }
 
@@ -29,8 +29,8 @@
   position: absolute;
   left: 90%;
   transform: translate(-50%, -50%);
-  width: 170px;
-  height: 170px;
+  width: 175px;
+  height: 175px;
 }
 
 #chap{
@@ -48,17 +48,17 @@
 
 .bottom,.cap,.text{
   font-family: "vazir";
-  font-size: 40px;
+  font-size: 45px;
   color:white;
   text-shadow: 2px 2px #000000;
 }
 
 .bottom{
-  font-size:55px;
+  font-size:60px;
 }
 
 .text{
-  font-size:75px;
+  font-size:80px;
 }
 
 .cap{
