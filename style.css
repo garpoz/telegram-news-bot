@@ -13,26 +13,26 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 100%;
   max-width:100%;
   height:auto;
   border: 2px solid black;
 }
 .s-i{
-  width: 130px;
-  height: 130px;
+  width: 240px;
+  height: 240px;
   top: 10%;
 }
 #rast{
   position: absolute;
-  right: 20%;
+  left: 90%;
   transform: translate(-50%, -50%);
-  width: 90px;
-  height: 90px;
+  width: 170px;
+  height: 170px;
 }
 #chap{
   position: absolute;
-  left: 34%;
+  left: 15%;
   transform: translate(-50%, -50%);
 }
 .text,.cap{
@@ -41,9 +41,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: "vazir";
-  font-size: 22px;
+  font-size: 40px;
   color:white;
-  padding-left: 20px;
+  padding-left:20px;
   padding-right: 20px;
 }
 .cap{
